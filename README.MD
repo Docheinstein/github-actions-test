@@ -1,1 +1,2 @@
 ![Build](https://github.com/Docheinstein/github-actions-test/actions/workflows/make-single-platform.yml/badge.svg)
+![Build](https://github.com/Docheinstein/github-actions-test/actions/workflows/make-multi-platform.yml/badge.svg)
