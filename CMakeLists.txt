@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.17)
 project(github_actions_test)
 
 set(CMAKE_CXX_STANDARD 17)
