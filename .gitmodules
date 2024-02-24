@@ -1,0 +1,8 @@
+[submodule "external/zlib"]
+	path = external/zlib
+	url = https://github.com/madler/zlib
+	branch = master
+[submodule "external/libpng"]
+	path = external/libpng
+	url = https://github.com/Docheinstein/libpng
+	branch = master
