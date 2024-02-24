@@ -7,5 +7,5 @@ add_subdirectory(external)
 
 
 add_executable(github_actions_test main.cpp)
-target_link_libraries(github_actions_test PRIVATE png_static)
+target_link_libraries(github_actions_test PRIVATE zlibstatic)
 

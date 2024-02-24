@@ -1,4 +1,6 @@
 #include <iostream>
+
+#if 0
 #include "png.h"
 
 int width, height;
@@ -86,3 +88,12 @@ int main() {
     write_png_file("test.png");
     return 0;
 }
+
+#else
+
+#include "zlib.h"
+
+int main() {
+  return 0;
+}
+#endif
