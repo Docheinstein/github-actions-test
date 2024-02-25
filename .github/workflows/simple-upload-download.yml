@@ -36,8 +36,11 @@ jobs:
         with:
           name: "hello"
 
+      - name: Display structure of downloaded files
+        run: ls -R
+
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ inputs.version }}
           files: |
-            hello/hello.zip
+            ${{ github.workspace }}/hello
