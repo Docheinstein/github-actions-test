@@ -1,0 +1,16 @@
+name: Deploy artifact
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+    - run: mkdir -p container
+    - run: echo hello > container/artifact.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: container/artifact.txt
