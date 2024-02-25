@@ -2,8 +2,12 @@
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
 name: CMake on multiple platforms
 
-on: push
-
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        required: true
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -61,13 +65,22 @@ jobs:
       run: |
         zip -r ${{ github.workspace }}/build.zip ${{ github.workspace }}/build
 
-#    - uses: actions/upload-artifact@v4
-#      with:
-#        name: my-artifact
-#        path: container/artifact.txt
-
-    - uses: softprops/action-gh-release@v1
+    - uses: actions/upload-artifact@v4
       with:
-        tag_name: ${{ inputs.version }}
-        files: |
-          ${{ github.workspace }}/build.zip
+        name: ${{ matrix.os }}-${{ matrix.c_compiler }}
+        path: ${{ github.workspace }}/build.zip
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: "ubuntu-latest-gcc"
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ inputs.version }}
+          files: |
+            ubuntu-latest-gcc/ubuntu-latest-gcc.zip
