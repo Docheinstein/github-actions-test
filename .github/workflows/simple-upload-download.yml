@@ -20,7 +20,7 @@ jobs:
     - name: Package
       shell: bash
       run: |
-        zip -r hello.zip hello
+        zip -r hello.zip hello.txt
 
     - uses: actions/upload-artifact@v4
       with:
