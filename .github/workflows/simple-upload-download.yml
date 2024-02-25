@@ -51,6 +51,6 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          title: ${{ inputs.version }}
+          automatic_release_tag: ${{ inputs.version }}
           files: |
             build/hello.txt
