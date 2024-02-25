@@ -51,4 +51,4 @@ jobs:
         with:
           tag_name: ${{ inputs.version }}
           files: |
-            build
+            build/hello.txt
