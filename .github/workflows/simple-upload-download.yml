@@ -22,22 +22,18 @@ jobs:
       run: |
         zip -r hello.zip hello.txt
 
-    - uses: actions/upload-artifact@v4
+#    - uses: actions/upload-artifact@v4
+#      with:
+#        name: hello
+#        path: hello.zip
+#
+#    - name: Download artifact
+#      uses: actions/download-artifact@v1
+#      with:
+#        name: hello
+
+    - uses: softprops/action-gh-release@v1
       with:
-        name: hello
-        path: hello.zip
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: hello
-
-      - uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ inputs.version }}
-          files: |
-            hello.hello.zip
+        tag_name: ${{ inputs.version }}
+        files: |
+          hello.hello.zip
