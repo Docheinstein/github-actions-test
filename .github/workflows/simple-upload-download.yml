@@ -53,4 +53,4 @@ jobs:
           prerelease: false
           automatic_release_tag: ${{ inputs.version }}
           files: |
-            build/hello.txt
+            build
