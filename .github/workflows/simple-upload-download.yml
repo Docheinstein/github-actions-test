@@ -47,8 +47,10 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -laR
 
-      - uses: softprops/action-gh-release@v1
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          tag_name: ${{ inputs.version }}
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          title: ${{ inputs.version }}
           files: |
             build/hello.txt
