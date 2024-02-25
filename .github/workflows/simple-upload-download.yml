@@ -15,17 +15,19 @@ jobs:
     steps:
     - name: Echo
       run: >
-        echo hello > hello.txt
-
-    - name: Package
-      shell: bash
-      run: |
-        zip -r hello.zip hello.txt
+        mkdir build
+        echo hello > build/hello.txt
+        echo world > build/world.txt
+#
+#    - name: Package
+#      shell: bash
+#      run: |
+#        zip -r hello.zip hello.txt
 
     - uses: actions/upload-artifact@v4
       with:
-        name: hello
-        path: hello.zip
+        name: build-artifact
+        path: build
 
   deploy:
     needs: build
@@ -34,7 +36,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: "hello"
+          name: "build-artifact"
 
       - name: PWD
         run: pwd
@@ -49,4 +51,4 @@ jobs:
         with:
           tag_name: ${{ inputs.version }}
           files: |
-            ${{ github.workspace }}/hello.zip
+            ${{ github.workspace }}/build
