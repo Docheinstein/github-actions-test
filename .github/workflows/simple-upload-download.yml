@@ -36,11 +36,17 @@ jobs:
         with:
           name: "hello"
 
+      - name: PWD
+        run: pwd
+
+      - name: Echo workspace
+        run: echo ${{ github.workspace }}
+
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -laR
 
       - uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ inputs.version }}
           files: |
-            ${{ github.workspace }}/hello
+            ${{ github.workspace }}/hello.zip
