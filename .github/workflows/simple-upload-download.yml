@@ -36,4 +36,4 @@ jobs:
       with:
         tag_name: ${{ inputs.version }}
         files: |
-          hello.hello.zip
+          hello.zip
